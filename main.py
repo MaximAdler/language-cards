@@ -35,7 +35,7 @@ if args.new_pair is not None:
     with open('dictionary.json') as dictionary:
         dictionary = json.loads(dictionary.read())
 
-    next_id = int(max(dictionary)) + 1
+    next_id = int(max(dictionary)) + 1 if dictionary else 1
 
     dictionary[next_id] = {
         'original': original,
@@ -93,7 +93,7 @@ if args.train is not None:
             print(f'Answer was: {real_answer}')
             time.sleep(4)
 
-            clear_window()
+        clear_window()
 
 
 if args.settings is not None:
