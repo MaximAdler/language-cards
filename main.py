@@ -35,7 +35,7 @@ if args.new_pair is not None:
     with open('dictionary.json') as dictionary:
         dictionary = json.loads(dictionary.read())
 
-    next_id = int(max(dictionary)) + 1 if dictionary else 1
+    next_id = max([int(x) for x in dictionary]) + 1 if dictionary else 1
 
     dictionary[next_id] = {
         'original': original,
@@ -75,6 +75,8 @@ if args.train is not None:
 
         print(FIGLET.renderText(f'---------\n{card[1][card_type]}\n---------\n'))
         answer = input('Type your translation here: ')
+
+        clear_window()
 
         real_answer = card[1]['original' if card_type == 'translation' else 'translation']
         if answer == real_answer:
